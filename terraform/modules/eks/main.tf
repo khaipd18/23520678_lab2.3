@@ -24,6 +24,9 @@ module "eks" {
     }
   }
 
+  cluster_endpoint_public_access  = true
+  cluster_endpoint_private_access = true
+
   # Cấp quyền admin cho người tạo cluster
   enable_cluster_creator_admin_permissions = true
 
