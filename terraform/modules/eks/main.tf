@@ -26,4 +26,19 @@ module "eks" {
 
   # Cấp quyền admin cho người tạo cluster
   enable_cluster_creator_admin_permissions = true
+
+  access_entries = {
+    jenkins_ci_access = {
+      principal_arn     = "arn:aws:iam::797226340543:user/jenkins-ci"
+      
+      policy_associations = {
+        cluster_admin = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      }
+    }
+  }
 }
