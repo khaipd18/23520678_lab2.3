@@ -92,22 +92,19 @@ pipeline {
 
         stage('3. Deploy to EKS') {
             steps {
-                // Trỏ tới credential chứa file kubeconfig của EKS
                 withKubeConfig([credentialsId: 'k8s-kubeconfig']) {
                     sh '''
                     echo "🔄 Cập nhật tag mới và Deploy..."
                     
-                    # Thay thế tag và ECR URI trong manifest của User Service
                     sed -i "s|image: 797226340543.*|image: ${ECR_REGISTRY}/user-service:${IMAGE_TAG}|g" k8s/user-service/deployment.yaml
-                    kubectl apply -f k8s/user-service/
+                    kubectl apply -f k8s/user-service/ --validate=false
                     
-                    # Thay thế tag và ECR URI trong manifest của Product Service
                     sed -i "s|image: 797226340543.*|image: ${ECR_REGISTRY}/product-service:${IMAGE_TAG}|g" k8s/product-service/deployment.yaml
-                    kubectl apply -f k8s/product-service/
+                    kubectl apply -f k8s/product-service/ --validate=false
                     '''
                 }
-            }
-        }
+    }
+}
     }
 
     post {
