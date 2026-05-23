@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  labels:
+    app: user-service
+spec:
+  replicas: 2 # Chạy 2 pod để đảm bảo tính sẵn sàng (High Availability)
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+      - name: user-service
+        image: 797226340543.dkr.ecr.ap-southeast-1.amazonaws.com/user-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3001
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
