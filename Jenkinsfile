@@ -24,7 +24,7 @@ pipeline {
                 // ==================== USER SERVICE ====================
                 stage('User Service') {
                     steps {
-                        dir('user-service') { // Di chuyển vào thư mục user-service
+                        dir('src/user-service') { // Di chuyển vào thư mục user-service
                             echo "🚀 Bắt đầu CI cho User Service..."
                             
                             // 2.1 SonarQube Scan
@@ -58,7 +58,7 @@ pipeline {
                 // ==================== PRODUCT SERVICE ====================
                 stage('Product Service') {
                     steps {
-                        dir('product-service') { // Di chuyển vào thư mục product-service
+                        dir('src/product-service') { // Di chuyển vào thư mục product-service
                             echo "🚀 Bắt đầu CI cho Product Service..."
                             
                             // 2.1 SonarQube Scan
