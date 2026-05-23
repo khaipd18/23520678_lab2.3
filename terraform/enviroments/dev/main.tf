@@ -12,6 +12,6 @@ module "eks" {
 }
 
 module "ecr" {
-  source       = "../../modules/ecr_oidc"
+  source       = "../../modules/ecr"
   repositories = var.ecr_repos
 }
