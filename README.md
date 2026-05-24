@@ -1,4 +1,4 @@
-# End-to-End Microservices CI/CD Pipeline on AWS EKS
+# End-to-End Microservices CI/CD Pipeline on AWS EKS (lab2.3)
 
 Dự án này cấu hình và triển khai một quy trình CI/CD hoàn toàn tự động cho hệ thống Microservices (`user-service` và `product-service`) lên nền tảng Amazon EKS (Elastic Kubernetes Service). Quy trình sử dụng Infrastructure as Code (IaC) với Terraform và công cụ tự động hóa Jenkins.
 
